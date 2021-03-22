@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<hr> <br>
+{% if error %}
+<div class="alert alert-danger" role="alert">
+{{ error }}
+</div>
+<br><br>
+{% endif %}
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+<form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+	{% csrf_token %}
+<!--	<div class="form-row">-->
+<!--		<div class="col-md-6">-->
+			<input type="text" id="login" class="fadeIn second" name="name" placeholder="File Name:"><br><br>
+<!--		</div>-->
+<!--	</div>-->
+<!--	<div class="form-row">-->
+<!--		<div class="col-md-6">-->
+			<input type="text" id="login" class="fadeIn second" name="keyword" placeholder="Keywords:"><br><br>
+<!--		</div>-->
+<!--	</div>-->
+<!--	<div class="form-row">-->
+<!--		<div class="col-md-6">-->
+			<input type="file" accept=".ppt,.pptx" name="file" class="fadeIn second"><br><br>
+<!--		</div>-->
+<!--	</div>-->
+			<button type="submit" class="button">Add Document</button>
+</form>
+  </div></div>
+<br><br>
+<br><br>
+<hr>
+{% endblock %}

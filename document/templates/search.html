@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br>
+<hr>
+<form action="" method="get" class="form-inline">
+	{% csrf_token %}
+	<div class="form-group">
+	<input type="search" placeholder="search for document..." name="query" class="form-control">
+		<input type="hidden" id="qu" name="qu" value="{{ query }}">
+	<input type="submit" value="Search" class="btn btn-success">
+	</div>
+</form>
+<br>
+
+{% for q in query_object %}
+<div class="card border border-secondary">
+	<div class="row">
+<!--		<div class="col-md-2 m-5">-->
+<!--			<a href="{{ q.file.url }}"><i style="color: grey;" class="fas fa-file-word fa-10x fa-secondary card-image"></i></a>-->
+<!--		</div>-->
+		<div class="col-md-8">
+			<div class="card-body">
+				<h4 class="card-title">Name: {{ q.name }}</h4>
+				<p>Keywords: {{ q.keyword }}</p>
+				<p>Uploaded by: {{ q.creater }}</p>
+				<p>File Name: {{ q.file.name }}</p>
+			</div>
+		</div>
+		<div class="col-md-2 m-5">
+			<a href="{{ q.file.url }}"><button class="button">Download!</button></a>
+		</div>
+	</div>
+</div>
+<br>
+{% endfor %}
+<br><br>
+<hr>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% for document in documents.all %}
+	{{ document.name }}
+		<a href="{{ document.file.url }}"><img src="" alt="TEMPLATE DOCUMENT"></a>
+	{% endfor %}
+{% endblock %}
